@@ -1,650 +1,681 @@
-<html><body><h1>Hello</h1></body></html>
-<footer style="margin-top:40px; text-align:center; font-size:14px; color:#444;">
-    Calculator maintained by 
-    <a href="https://thecryptotaxhub.com/" target="_blank" style="color:#1a0dab;">
-        The Crypto Tax Hub
-    </a>.
-</footer>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Free UK Crypto Tax Calculator – The Crypto Tax Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- wp:html -->
-<style>
-  /* Import Inter just for the promo box (to better match Koinly’s style) */
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap');
+  <!-- Styles -->
+  <style>
+    /* Import Inter just for the promo box (to better match Koinly’s style) */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap');
 
-  .uk-crypto-tax-calculator {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background-color: #f7fafc;
-      padding: 1rem;
-  }
+    .uk-crypto-tax-calculator {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background-color: #f7fafc;
+        padding: 1rem;
+        min-height: 100vh;
+    }
 
-  @media (min-width: 768px) {
-      .uk-crypto-tax-calculator {
-          padding: 2rem;
-      }
-  }
+    @media (min-width: 768px) {
+        .uk-crypto-tax-calculator {
+            padding: 2rem;
+        }
+    }
 
-  .uk-crypto-tax-calculator .uk-container {
-      max-width: 72rem; /* ~1152px */
-      margin: 0 auto;
-  }
+    .uk-crypto-tax-calculator .uk-container {
+        max-width: 72rem; /* ~1152px */
+        margin: 0 auto;
+    }
 
-  .uk-crypto-tax-calculator .uk-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 1rem;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid #e5e7eb;
-  }
+    .uk-crypto-tax-calculator .uk-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid #e5e7eb;
+    }
 
-  .uk-crypto-tax-calculator .uk-header-title {
-      font-size: 1.875rem;
-      line-height: 1.2;
-      font-weight: 800;
-      color: #1f2933;
-      letter-spacing: -0.02em;
-  }
+    .uk-crypto-tax-calculator .uk-header-title {
+        font-size: 1.875rem;
+        line-height: 1.2;
+        font-weight: 800;
+        color: #1f2933;
+        letter-spacing: -0.02em;
+    }
 
-  /* Flag */
-  .uk-crypto-tax-calculator .uk-flag {
-      width: 4rem;
-      height: 2.5rem;
-      border-radius: 0.5rem;
-      overflow: hidden;
-      position: relative;
-      border: 1px solid #d1d5db;
-      box-shadow: 0 4px 6px rgba(15, 23, 42, 0.12);
-  }
-  .uk-crypto-tax-calculator .uk-flag-base {
-      position: absolute;
-      inset: 0;
-      background-color: #00247d;
-  }
-  .uk-crypto-tax-calculator .uk-flag-diag-white-1,
-  .uk-crypto-tax-calculator .uk-flag-diag-white-2,
-  .uk-crypto-tax-calculator .uk-flag-diag-red-1,
-  .uk-crypto-tax-calculator .uk-flag-diag-red-2 {
-      position: absolute;
-      width: 100%;
-      transform-origin: center;
-  }
-  .uk-crypto-tax-calculator .uk-flag-diag-white-1,
-  .uk-crypto-tax-calculator .uk-flag-diag-white-2 {
-      height: 16.66%;
-      background-color: #ffffff;
-      top: 42%;
-  }
-  .uk-crypto-tax-calculator .uk-flag-diag-white-1 {
-      transform: skewY(-12deg);
-  }
-  .uk-crypto-tax-calculator .uk-flag-diag-white-2 {
-      transform: skewY(12deg);
-  }
-  .uk-crypto-tax-calculator .uk-flag-diag-red-1,
-  .uk-crypto-tax-calculator .uk-flag-diag-red-2 {
-      height: 8.33%;
-      background-color: #dc2626;
-      top: 45%;
-  }
-  .uk-crypto-tax-calculator .uk-flag-diag-red-1 {
-      transform: skewY(-12deg);
-  }
-  .uk-crypto-tax-calculator .uk-flag-diag-red-2 {
-      transform: skewY(12deg);
-  }
-  .uk-crypto-tax-calculator .uk-flag-horiz-white {
-      position: absolute;
-      top: 37.5%;
-      width: 100%;
-      height: 25%;
-      background-color: #ffffff;
-  }
-  .uk-crypto-tax-calculator .uk-flag-vert-white {
-      position: absolute;
-      left: 37.5%;
-      width: 25%;
-      height: 100%;
-      background-color: #ffffff;
-  }
-  .uk-crypto-tax-calculator .uk-flag-horiz-red {
-      position: absolute;
-      top: 42%;
-      width: 100%;
-      height: 16.66%;
-      background-color: #dc2626;
-  }
-  .uk-crypto-tax-calculator .uk-flag-vert-red {
-      position: absolute;
-      left: 42%;
-      width: 16.66%;
-      height: 100%;
-      background-color: #dc2626;
-  }
+    /* Flag */
+    .uk-crypto-tax-calculator .uk-flag {
+        width: 4rem;
+        height: 2.5rem;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid #d1d5db;
+        box-shadow: 0 4px 6px rgba(15, 23, 42, 0.12);
+    }
+    .uk-crypto-tax-calculator .uk-flag-base {
+        position: absolute;
+        inset: 0;
+        background-color: #00247d;
+    }
+    .uk-crypto-tax-calculator .uk-flag-diag-white-1,
+    .uk-crypto-tax-calculator .uk-flag-diag-white-2,
+    .uk-crypto-tax-calculator .uk-flag-diag-red-1,
+    .uk-crypto-tax-calculator .uk-flag-diag-red-2 {
+        position: absolute;
+        width: 100%;
+        transform-origin: center;
+    }
+    .uk-crypto-tax-calculator .uk-flag-diag-white-1,
+    .uk-crypto-tax-calculator .uk-flag-diag-white-2 {
+        height: 16.66%;
+        background-color: #ffffff;
+        top: 42%;
+    }
+    .uk-crypto-tax-calculator .uk-flag-diag-white-1 {
+        transform: skewY(-12deg);
+    }
+    .uk-crypto-tax-calculator .uk-flag-diag-white-2 {
+        transform: skewY(12deg);
+    }
+    .uk-crypto-tax-calculator .uk-flag-diag-red-1,
+    .uk-crypto-tax-calculator .uk-flag-diag-red-2 {
+        height: 8.33%;
+        background-color: #dc2626;
+        top: 45%;
+    }
+    .uk-crypto-tax-calculator .uk-flag-diag-red-1 {
+        transform: skewY(-12deg);
+    }
+    .uk-crypto-tax-calculator .uk-flag-diag-red-2 {
+        transform: skewY(12deg);
+    }
+    .uk-crypto-tax-calculator .uk-flag-horiz-white {
+        position: absolute;
+        top: 37.5%;
+        width: 100%;
+        height: 25%;
+        background-color: #ffffff;
+    }
+    .uk-crypto-tax-calculator .uk-flag-vert-white {
+        position: absolute;
+        left: 37.5%;
+        width: 25%;
+        height: 100%;
+        background-color: #ffffff;
+    }
+    .uk-crypto-tax-calculator .uk-flag-horiz-red {
+        position: absolute;
+        top: 42%;
+        width: 100%;
+        height: 16.66%;
+        background-color: #dc2626;
+    }
+    .uk-crypto-tax-calculator .uk-flag-vert-red {
+        position: absolute;
+        left: 42%;
+        width: 16.66%;
+        height: 100%;
+        background-color: #dc2626;
+    }
 
-  /* Grid layout */
-  .uk-crypto-tax-calculator .uk-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      margin-bottom: 2rem;
-  }
+    /* Grid layout */
+    .uk-crypto-tax-calculator .uk-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
 
-  @media (min-width: 1024px) {
-      .uk-crypto-tax-calculator .uk-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-  }
+    @media (min-width: 1024px) {
+        .uk-crypto-tax-calculator .uk-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
 
-  /* Card */
-  .uk-crypto-tax-calculator .card {
-      background-color: #ffffff;
-      border-radius: 0.9rem;
-      border: 1px solid #f3f4f6;
-      box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08),
-                  0 4px 6px -4px rgba(15, 23, 42, 0.06);
-      padding: 1.5rem;
-      min-height: 250px;
-  }
+    /* Card */
+    .uk-crypto-tax-calculator .card {
+        background-color: #ffffff;
+        border-radius: 0.9rem;
+        border: 1px solid #f3f4f6;
+        box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08),
+                    0 4px 6px -4px rgba(15, 23, 42, 0.06);
+        padding: 1.5rem;
+        min-height: 250px;
+    }
 
-  .uk-crypto-tax-calculator .card h2 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #374151;
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid #e5e7eb;
-  }
+    .uk-crypto-tax-calculator .card h2 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #374151;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #e5e7eb;
+    }
 
-  /* Form elements */
-  .uk-crypto-tax-calculator label {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #4b5563;
-      display: block;
-  }
+    /* Form elements */
+    .uk-crypto-tax-calculator label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #4b5563;
+        display: block;
+    }
 
-  .uk-crypto-tax-calculator input[type="number"] {
-      margin-top: 0.25rem;
-      width: 100%;
-      border-radius: 0.6rem;
-      border: 1px solid #d1d5db;
-      padding: 0.75rem;
-      font-size: 0.95rem;
-      background-color: #f9fafb;
-      box-sizing: border-box;
-  }
+    .uk-crypto-tax-calculator input[type="number"] {
+        margin-top: 0.25rem;
+        width: 100%;
+        border-radius: 0.6rem;
+        border: 1px solid #d1d5db;
+        padding: 0.75rem;
+        font-size: 0.95rem;
+        background-color: #f9fafb;
+        box-sizing: border-box;
+    }
 
-  .uk-crypto-tax-calculator input[type="number"]:focus {
-      outline: none;
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 1px #3b82f6;
-      background-color: #ffffff;
-  }
+    .uk-crypto-tax-calculator input[type="number"]:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 1px #3b82f6;
+        background-color: #ffffff;
+    }
 
-  .uk-crypto-tax-calculator .help-text {
-      font-size: 0.7rem;
-      color: #9ca3af;
-      margin-top: 0.25rem;
-  }
+    .uk-crypto-tax-calculator .help-text {
+        font-size: 0.7rem;
+        color: #9ca3af;
+        margin-top: 0.25rem;
+    }
 
-  /* Result rows */
-  .uk-crypto-tax-calculator .row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.75rem;
-      border-radius: 0.6rem;
-  }
+    /* Result rows */
+    .uk-crypto-tax-calculator .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem;
+        border-radius: 0.6rem;
+    }
 
-  .uk-crypto-tax-calculator .row-label {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #4b5563;
-  }
+    .uk-crypto-tax-calculator .row-label {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #4b5563;
+    }
 
-  .uk-crypto-tax-calculator .row-value {
-      font-weight: 800;
-  }
+    .uk-crypto-tax-calculator .row-value {
+        font-weight: 800;
+    }
 
-  .uk-crypto-tax-calculator .row-blue {
-      background-color: rgba(239, 246, 255, 0.8);
-  }
+    .uk-crypto-tax-calculator .row-blue {
+        background-color: rgba(239, 246, 255, 0.8);
+    }
 
-  .uk-crypto-tax-calculator .row-green {
-      background-color: #ecfdf3;
-      border-left: 4px solid #22c55e;
-  }
+    .uk-crypto-tax-calculator .row-green {
+        background-color: #ecfdf3;
+        border-left: 4px solid #22c55e;
+    }
 
-  .uk-crypto-tax-calculator .row-red {
-      background-color: #fee2e2;
-  }
+    .uk-crypto-tax-calculator .row-red {
+        background-color: #fee2e2;
+    }
 
-  .uk-crypto-tax-calculator .row-blue-strong {
-      background-color: #dbeafe;
-  }
+    .uk-crypto-tax-calculator .row-blue-strong {
+        background-color: #dbeafe;
+    }
 
-  .uk-crypto-tax-calculator .border-top {
-      border-top: 1px solid #e5e7eb;
-      padding-top: 1rem;
-      margin-top: 0.5rem;
-  }
+    .uk-crypto-tax-calculator .border-top {
+        border-top: 1px solid #e5e7eb;
+        padding-top: 1rem;
+        margin-top: 0.5rem;
+    }
 
-  /* Logic explanation */
-  .uk-crypto-tax-calculator .logic-box {
-      background-color: #f9fafb;
-      padding: 0.75rem;
-      border-radius: 0.6rem;
-      margin-bottom: 0.75rem;
-  }
+    /* Logic explanation */
+    .uk-crypto-tax-calculator .logic-box {
+        background-color: #f9fafb;
+        padding: 0.75rem;
+        border-radius: 0.6rem;
+        margin-bottom: 0.75rem;
+    }
 
-  .uk-crypto-tax-calculator .logic-title {
-      font-weight: 600;
-      color: #111827;
-      margin-bottom: 0.25rem;
-  }
+    .uk-crypto-tax-calculator .logic-title {
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 0.25rem;
+    }
 
-  .uk-crypto-tax-calculator .logic-text {
-      font-size: 0.75rem;
-      color: #6b7280;
-  }
+    .uk-crypto-tax-calculator .logic-text {
+        font-size: 0.75rem;
+        color: #6b7280;
+    }
 
-  .uk-crypto-tax-calculator .logic-highlight {
-      border-left: 4px solid #eab308;
-  }
+    .uk-crypto-tax-calculator .logic-highlight {
+        border-left: 4px solid #eab308;
+    }
 
-  .uk-crypto-tax-calculator .logic-list {
-      margin-top: 0.5rem;
-      padding-left: 1rem;
-      list-style: disc;
-      font-size: 0.75rem;
-      color: #4b5563;
-  }
+    .uk-crypto-tax-calculator .logic-list {
+        margin-top: 0.5rem;
+        padding-left: 1rem;
+        list-style: disc;
+        font-size: 0.75rem;
+        color: #4b5563;
+    }
 
-  /* Affiliate box */
-  .uk-crypto-tax-calculator .promo-card {
-      border-width: 4px;
-      border-style: solid;
-      border-color: #e9d5ff;
-      background-color: rgba(237, 233, 254, 0.6);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      text-align: left;
-      border-radius: 0.9rem;
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  }
+    /* Affiliate box */
+    .uk-crypto-tax-calculator .promo-card {
+        border-width: 4px;
+        border-style: solid;
+        border-color: #e9d5ff;
+        background-color: rgba(237, 233, 254, 0.6);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        border-radius: 0.9rem;
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-  .uk-crypto-tax-calculator .promo-header {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-  }
+    .uk-crypto-tax-calculator .promo-header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
 
-  .uk-crypto-tax-calculator .promo-logo {
-      width: 7.5rem;
-      height: auto;
-      object-fit: contain;
-      background-color: transparent;
-  }
+    .uk-crypto-tax-calculator .promo-logo {
+        width: 7.5rem;
+        height: auto;
+        object-fit: contain;
+        background-color: transparent;
+    }
 
-  .uk-crypto-tax-calculator .promo-title {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: #1f2933;
-      margin-bottom: 0.5rem;
-  }
+    .uk-crypto-tax-calculator .promo-title {
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: #1f2933;
+        margin-bottom: 0.5rem;
+    }
 
-  .uk-crypto-tax-calculator .promo-text {
-      font-size: 0.95rem;
-      color: #4b5563;
-      margin-bottom: 0.75rem;
-  }
+    .uk-crypto-tax-calculator .promo-text {
+        font-size: 0.95rem;
+        color: #4b5563;
+        margin-bottom: 0.75rem;
+    }
 
-  /* Green check “bullets” */
-  .uk-crypto-tax-calculator .promo-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.25rem 0;
-      width: 100%;
-      max-width: 16rem;
-  }
+    /* Green check “bullets” */
+    .uk-crypto-tax-calculator .promo-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.25rem 0;
+        width: 100%;
+        max-width: 16rem;
+    }
 
-  .uk-crypto-tax-calculator .promo-list-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.35rem;
-      font-size: 0.85rem;
-      color: #14532d;
-      font-weight: 500;
-  }
+    .uk-crypto-tax-calculator .promo-list-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.35rem;
+        font-size: 0.85rem;
+        color: #14532d;
+        font-weight: 500;
+    }
 
-  .uk-crypto-tax-calculator .promo-check {
-      width: 1.1rem;
-      height: 1.1rem;
-      border-radius: 0.35rem;
-      background-color: rgba(34, 197, 94, 0.07);
-      border: 1px solid #22c55e;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #16a34a;
-      flex-shrink: 0;
-  }
+    .uk-crypto-tax-calculator .promo-check {
+        width: 1.1rem;
+        height: 1.1rem;
+        border-radius: 0.35rem;
+        background-color: rgba(34, 197, 94, 0.07);
+        border: 1px solid #22c55e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #16a34a;
+        flex-shrink: 0;
+    }
 
-  /* CTA Button */
-  .uk-crypto-tax-calculator .cta-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      max-width: 16rem;
-      padding: 0.9rem 2rem;
-      border-radius: 9999px;
-      background-color: #7c3aed;
-      color: #ffffff !important;
-      font-weight: 800;
-      font-size: 1.05rem;
-      text-decoration: none;
-      box-shadow: 0 20px 25px -5px rgba(129, 140, 248, 0.65);
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-  }
+    /* CTA Button */
+    .uk-crypto-tax-calculator .cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 16rem;
+        padding: 0.9rem 2rem;
+        border-radius: 9999px;
+        background-color: #7c3aed;
+        color: #ffffff !important;
+        font-weight: 800;
+        font-size: 1.05rem;
+        text-decoration: none;
+        box-shadow: 0 20px 25px -5px rgba(129, 140, 248, 0.65);
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    }
 
-  .uk-crypto-tax-calculator .cta-button:hover {
-      background-color: #6d28d9;
-      transform: translateY(-2px);
-      box-shadow: 0 18px 30px -8px rgba(129, 140, 248, 0.8);
-  }
+    .uk-crypto-tax-calculator .cta-button:hover {
+        background-color: #6d28d9;
+        transform: translateY(-2px);
+        box-shadow: 0 18px 30px -8px rgba(129, 140, 248, 0.8);
+    }
 
-  .uk-crypto-tax-calculator .cta-button:active {
-      transform: translateY(0);
-      box-shadow: 0 10px 20px -8px rgba(129, 140, 248, 0.7);
-  }
+    .uk-crypto-tax-calculator .cta-button:active {
+        transform: translateY(0);
+        box-shadow: 0 10px 20px -8px rgba(129, 140, 248, 0.7);
+    }
 
-  .uk-crypto-tax-calculator .cta-icon {
-      width: 1.5rem;
-      height: 1.5rem;
-      margin-right: 0.5rem;
-      stroke: currentColor;
-  }
-</style>
+    .uk-crypto-tax-calculator .cta-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 0.5rem;
+        stroke: currentColor;
+    }
 
-<div class="uk-crypto-tax-calculator">
-  <div class="uk-container">
-      
-      <!-- Header -->
-      <header class="uk-header">
-          <h1 class="uk-header-title">
-              UK Crypto Tax Calculator
-          </h1>
-          
-          <!-- UK Flag -->
-          <div class="uk-flag">
-              <div class="uk-flag-base"></div>
-              <div class="uk-flag-diag-white-1"></div>
-              <div class="uk-flag-diag-white-2"></div>
-              <div class="uk-flag-diag-red-1"></div>
-              <div class="uk-flag-diag-red-2"></div>
-              <div class="uk-flag-horiz-white"></div>
-              <div class="uk-flag-vert-white"></div>
-              <div class="uk-flag-horiz-red"></div>
-              <div class="uk-flag-vert-red"></div>
-          </div>
-      </header>
+    /* Footer backlinks */
+    .site-footer {
+        margin-top: 40px;
+        text-align: center;
+        font-size: 14px;
+        color: #444;
+        padding: 1.5rem 0 0.5rem;
+    }
+    .site-footer a {
+        color: #1a0dab;
+        text-decoration: none;
+    }
+    .site-footer a:hover {
+        text-decoration: underline;
+    }
+  </style>
+</head>
 
-      <!-- Main Grid (Box 1 and Box 2) -->
-      <div class="uk-grid">
+<body>
+  <div class="uk-crypto-tax-calculator">
+    <div class="uk-container">
+        
+        <!-- Header -->
+        <header class="uk-header">
+            <h1 class="uk-header-title">
+                UK Crypto Tax Calculator
+            </h1>
+            
+            <!-- UK Flag -->
+            <div class="uk-flag">
+                <div class="uk-flag-base"></div>
+                <div class="uk-flag-diag-white-1"></div>
+                <div class="uk-flag-diag-white-2"></div>
+                <div class="uk-flag-diag-red-1"></div>
+                <div class="uk-flag-diag-red-2"></div>
+                <div class="uk-flag-horiz-white"></div>
+                <div class="uk-flag-vert-white"></div>
+                <div class="uk-flag-horiz-red"></div>
+                <div class="uk-flag-vert-red"></div>
+            </div>
+        </header>
 
-          <!-- Box 1: Input Fields -->
-          <div id="box-1" class="card">
-              <h2>Tell us more</h2>
-              
-              <div>
-                  <!-- Profit Input -->
-                  <div style="margin-bottom: 1rem;">
-                      <label for="cryptoProfit">Profit from trading crypto (£)</label>
-                      <input type="number" id="cryptoProfit" value="20000" min="0" step="100" placeholder="e.g., 20000">
-                  </div>
-                  
-                  <!-- Other Income Input -->
-                  <div style="margin-bottom: 1rem;">
-                      <label for="otherIncome">Other income (Salary, Rent, etc.) (£)</label>
-                      <input type="number" id="otherIncome" value="30000" min="0" step="100" placeholder="e.g., 30000">
-                      <p class="help-text">Used to determine your CGT tax bracket (18% or 24%).</p>
-                  </div>
+        <!-- Main Grid (Box 1 and Box 2) -->
+        <div class="uk-grid">
 
-                  <!-- Expenses Input -->
-                  <div>
-                      <label for="cryptoExpenses">Crypto-related expenses (£)</label>
-                      <input type="number" id="cryptoExpenses" value="1000" min="0" step="100" placeholder="e.g., 1000">
-                      <p class="help-text">Deductible costs (e.g., transaction fees, professional advice).</p>
-                  </div>
-              </div>
-          </div>
+            <!-- Box 1: Input Fields -->
+            <div id="box-1" class="card">
+                <h2>Tell us more</h2>
+                
+                <div>
+                    <!-- Profit Input -->
+                    <div style="margin-bottom: 1rem;">
+                        <label for="cryptoProfit">Profit from trading crypto (£)</label>
+                        <input type="number" id="cryptoProfit" value="20000" min="0" step="100" placeholder="e.g., 20000">
+                    </div>
+                    
+                    <!-- Other Income Input -->
+                    <div style="margin-bottom: 1rem;">
+                        <label for="otherIncome">Other income (Salary, Rent, etc.) (£)</label>
+                        <input type="number" id="otherIncome" value="30000" min="0" step="100" placeholder="e.g., 30000">
+                        <p class="help-text">Used to determine your CGT tax bracket (18% or 24%).</p>
+                    </div>
 
-          <!-- Box 2: Results and Key Figures -->
-          <div id="box-2" class="card">
-              <h2>Taxes and Profit (2024/2025 Tax Year)</h2>
-              <div>
-                  <!-- Result Row 1: Net Profit -->
-                  <div class="row row-blue" style="margin-bottom: 0.75rem;">
-                      <p class="row-label">Your Net Crypto Gain</p>
-                      <p id="netProfitDisplay" class="row-value" style="color:#1d4ed8;font-size:1.125rem;">£19,000</p>
-                  </div>
+                    <!-- Expenses Input -->
+                    <div>
+                        <label for="cryptoExpenses">Crypto-related expenses (£)</label>
+                        <input type="number" id="cryptoExpenses" value="1000" min="0" step="100" placeholder="e.g., 1000">
+                        <p class="help-text">Deductible costs (e.g., transaction fees, professional advice).</p>
+                    </div>
+                </div>
+            </div>
 
-                  <!-- Result Row 2: CGT Allowance -->
-                  <div class="row row-green" style="margin-bottom: 0.75rem;">
-                      <p class="row-label">Tax-Free CGT Allowance (2024/25)</p>
-                      <p id="cgtAllowanceDisplay" class="row-value" style="color:#15803d;font-size:1.125rem;">- £3,000</p>
-                  </div>
+            <!-- Box 2: Results and Key Figures -->
+            <div id="box-2" class="card">
+                <h2>Taxes and Profit (2024/2025 Tax Year)</h2>
+                <div>
+                    <!-- Result Row 1: Net Profit -->
+                    <div class="row row-blue" style="margin-bottom: 0.75rem;">
+                        <p class="row-label">Your Net Crypto Gain</p>
+                        <p id="netProfitDisplay" class="row-value" style="color:#1d4ed8;font-size:1.125rem;">£19,000</p>
+                    </div>
 
-                  <!-- Separator: Taxable Gain -->
-                  <div class="border-top" style="margin-bottom: 0.75rem;">
-                      <div class="row" style="padding-left:0;padding-right:0;">
-                          <p class="row-label">Taxable Crypto Gain</p>
-                          <p id="taxableGainDisplay" class="row-value" style="font-size:1.25rem;color:#111827;">£16,000</p>
-                      </div>
-                  </div>
+                    <!-- Result Row 2: CGT Allowance -->
+                    <div class="row row-green" style="margin-bottom: 0.75rem;">
+                        <p class="row-label">Tax-Free CGT Allowance (2024/25)</p>
+                        <p id="cgtAllowanceDisplay" class="row-value" style="color:#15803d;font-size:1.125rem;">- £3,000</p>
+                    </div>
 
-                  <!-- Final Result 1: CGT Payable -->
-                  <div class="row row-red" style="margin-bottom:0.75rem;">
-                      <p class="row-label" style="font-size:1rem;">Capital Gains Tax to Pay</p>
-                      <p id="cgtToPayDisplay" class="row-value" style="font-size:1.5rem;color:#b91c1c;">£3,120</p>
-                  </div>
+                    <!-- Separator: Taxable Gain -->
+                    <div class="border-top" style="margin-bottom: 0.75rem;">
+                        <div class="row" style="padding-left:0;padding-right:0;">
+                            <p class="row-label">Taxable Crypto Gain</p>
+                            <p id="taxableGainDisplay" class="row-value" style="font-size:1.25rem;color:#111827;">£16,000</p>
+                        </div>
+                    </div>
 
-                  <!-- Final Result 2: Profit After Tax -->
-                  <div class="row row-blue-strong">
-                      <p class="row-label" style="font-size:1rem;">Profit After Tax</p>
-                      <p id="profitAfterTaxDisplay" class="row-value" style="font-size:1.5rem;color:#1d4ed8;">£15,880</p>
-                  </div>
-              </div>
-          </div>
+                    <!-- Final Result 1: CGT Payable -->
+                    <div class="row row-red" style="margin-bottom:0.75rem;">
+                        <p class="row-label" style="font-size:1rem;">Capital Gains Tax to Pay</p>
+                        <p id="cgtToPayDisplay" class="row-value" style="font-size:1.5rem;color:#b91c1c;">£3,120</p>
+                    </div>
 
-      </div>
+                    <!-- Final Result 2: Profit After Tax -->
+                    <div class="row row-blue-strong">
+                        <p class="row-label" style="font-size:1rem;">Profit After Tax</p>
+                        <p id="profitAfterTaxDisplay" class="row-value" style="font-size:1.5rem;color:#1d4ed8;">£15,880</p>
+                    </div>
+                </div>
+            </div>
 
-      <!-- Box 3: Logic and Promotion -->
-      <div class="uk-grid">
-          <!-- Left Side: Logic Explanation -->
-          <div id="box-3-logic" class="card">
-              <h2>Understanding the Calculation Logic</h2>
-              <div id="logicExplanation">
-                  <!-- Dynamic logic text is injected here -->
-              </div>
-          </div>
-          
-          <!-- Right Side: Affiliate Promotion -->
-          <div id="box-3-promotion" class="promo-card">
-              <!-- Koinly Logo ONLY -->
-              <div class="promo-header">
-                  <img 
-                      src="https://thecryptotaxhub.com/wp-content/uploads/2025/11/koinly_logo_png.webp"
-                      alt="Koinly Logo"
-                      class="promo-logo"
-                      onerror="this.onerror=null; this.src='https://koinly.io/favicon-196x196.png';"
-                  >
-              </div>
+        </div>
 
-              <h3 class="promo-title">Stop Guessing. Get Real Tax Reports.</h3>
-              
-              <p class="promo-text">
-                  Let Koinly handle the heavy lifting. Import your transactions and get an HMRC-ready tax report in minutes — free to try.
-              </p>
+        <!-- Box 3: Logic and Promotion -->
+        <div class="uk-grid">
+            <!-- Left Side: Logic Explanation -->
+            <div id="box-3-logic" class="card">
+                <h2>Understanding the Calculation Logic</h2>
+                <div id="logicExplanation">
+                    <!-- Dynamic logic text is injected here -->
+                </div>
+            </div>
+            
+            <!-- Right Side: Affiliate Promotion -->
+            <div id="box-3-promotion" class="promo-card">
+                <!-- Koinly Logo ONLY -->
+                <div class="promo-header">
+                    <img 
+                        src="https://thecryptotaxhub.com/wp-content/uploads/2025/11/koinly_logo_png.webp"
+                        alt="Koinly Logo"
+                        class="promo-logo"
+                        onerror="this.onerror=null; this.src='https://koinly.io/favicon-196x196.png';"
+                    >
+                </div>
 
-              <ul class="promo-list">
-                  <li class="promo-list-item">
-                      <span class="promo-check">✓</span>
-                      <span>Auto-imports trades</span>
-                  </li>
-                  <li class="promo-list-item">
-                      <span class="promo-check">✓</span>
-                      <span>HMRC-aligned rules</span>
-                  </li>
-                  <li class="promo-list-item">
-                      <span class="promo-check">✓</span>
-                      <span>Error detection</span>
-                  </li>
-                  <li class="promo-list-item">
-                      <span class="promo-check">✓</span>
-                      <span>Gains &amp; income</span>
-                  </li>
-                  <li class="promo-list-item">
-                      <span class="promo-check">✓</span>
-                      <span>One-click reports</span>
-                  </li>
-              </ul>
+                <h3 class="promo-title">Stop Guessing. Get Real Tax Reports.</h3>
+                
+                <p class="promo-text">
+                    Let Koinly handle the heavy lifting. Import your transactions and get an HMRC-ready tax report in minutes — free to try.
+                </p>
 
-              <!-- CTA Button -->
-              <a href="https://koinly.io/?via=F3B4CA9D&utm_source=affiliate" target="_blank" class="cta-button">
-                  <svg class="cta-icon" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4-4 4m0 0-4-4m4 4V4"/>
-                  </svg>
-                  Import My Transactions (FREE)
-              </a>
-          </div>
-      </div>
+                <ul class="promo-list">
+                    <li class="promo-list-item">
+                        <span class="promo-check">✓</span>
+                        <span>Auto-imports trades</span>
+                    </li>
+                    <li class="promo-list-item">
+                        <span class="promo-check">✓</span>
+                        <span>HMRC-aligned rules</span>
+                    </li>
+                    <li class="promo-list-item">
+                        <span class="promo-check">✓</span>
+                        <span>Error detection</span>
+                    </li>
+                    <li class="promo-list-item">
+                        <span class="promo-check">✓</span>
+                        <span>Gains &amp; income</span>
+                    </li>
+                    <li class="promo-list-item">
+                        <span class="promo-check">✓</span>
+                        <span>One-click reports</span>
+                    </li>
+                </ul>
 
+                <!-- CTA Button -->
+                <a href="https://koinly.io/?via=F3B4CA9D&utm_source=affiliate" target="_blank" class="cta-button">
+                    <svg class="cta-icon" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4-4 4m0 0-4-4m4 4V4"/>
+                    </svg>
+                    Import My Transactions (FREE)
+                </a>
+            </div>
+        </div>
+
+    </div>
   </div>
-</div>
 
-<script>
-  // Constants for the 2024/2025 Tax Year
-  var CGT_ALLOWANCE = 3000;
-  var BASIC_RATE_INCOME_THRESHOLD = 50270;
-  var CGT_BASIC_RATE = 0.18; // 18% for crypto (basic rate band)
-  var CGT_HIGHER_RATE = 0.24; // 24% for crypto (higher/additional)
+  <!-- SEO Backlinks Footer -->
+  <footer class="site-footer">
+      Calculator maintained by 
+      <a href="https://thecryptotaxhub.com/" target="_blank">
+          The Crypto Tax Hub
+      </a>
+      · View the full guide and live version:
+      <a href="https://thecryptotaxhub.com/free-uk-crypto-tax-calculator/" target="_blank">
+          Free UK Crypto Tax Calculator
+      </a>
+  </footer>
 
-  // DOM Elements
-  var inputs = {
-      cryptoProfit: document.getElementById('cryptoProfit'),
-      otherIncome: document.getElementById('otherIncome'),
-      cryptoExpenses: document.getElementById('cryptoExpenses')
-  };
-  var displays = {
-      netProfitDisplay: document.getElementById('netProfitDisplay'),
-      cgtAllowanceDisplay: document.getElementById('cgtAllowanceDisplay'),
-      taxableGainDisplay: document.getElementById('taxableGainDisplay'),
-      cgtToPayDisplay: document.getElementById('cgtToPayDisplay'),
-      profitAfterTaxDisplay: document.getElementById('profitAfterTaxDisplay')
-  };
-  var logicExplanation = document.getElementById('logicExplanation');
-  
-  // Formatter for GBP (with symbol)
-  var formatter = new Intl.NumberFormat('en-GB', { 
-      style: 'currency', 
-      currency: 'GBP',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0
-  });
+  <!-- Script -->
+  <script>
+    // Constants for the 2024/2025 Tax Year
+    var CGT_ALLOWANCE = 3000;
+    var BASIC_RATE_INCOME_THRESHOLD = 50270;
+    var CGT_BASIC_RATE = 0.18; // 18% for crypto (basic rate band)
+    var CGT_HIGHER_RATE = 0.24; // 24% for crypto (higher/additional)
 
-  // Formatter for plain numbers (no symbol)
-  var textFormatter = new Intl.NumberFormat('en-GB', { 
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0
-  });
-  
-  function calculateCGT() {
-      var profitInput = inputs.cryptoProfit;
-      var incomeInput = inputs.otherIncome;
-      var expensesInput = inputs.cryptoExpenses;
+    // DOM Elements
+    var inputs = {
+        cryptoProfit: document.getElementById('cryptoProfit'),
+        otherIncome: document.getElementById('otherIncome'),
+        cryptoExpenses: document.getElementById('cryptoExpenses')
+    };
+    var displays = {
+        netProfitDisplay: document.getElementById('netProfitDisplay'),
+        cgtAllowanceDisplay: document.getElementById('cgtAllowanceDisplay'),
+        taxableGainDisplay: document.getElementById('taxableGainDisplay'),
+        cgtToPayDisplay: document.getElementById('cgtToPayDisplay'),
+        profitAfterTaxDisplay: document.getElementById('profitAfterTaxDisplay')
+    };
+    var logicExplanation = document.getElementById('logicExplanation');
+    
+    // Formatter for GBP (with symbol)
+    var formatter = new Intl.NumberFormat('en-GB', { 
+        style: 'currency', 
+        currency: 'GBP',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    });
 
-      var profit = parseFloat(profitInput && profitInput.value) || 0;
-      var income = parseFloat(incomeInput && incomeInput.value) || 0;
-      var expenses = parseFloat(expensesInput && expensesInput.value) || 0;
+    // Formatter for plain numbers (no symbol)
+    var textFormatter = new Intl.NumberFormat('en-GB', { 
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    });
+    
+    function calculateCGT() {
+        var profitInput = inputs.cryptoProfit;
+        var incomeInput = inputs.otherIncome;
+        var expensesInput = inputs.cryptoExpenses;
 
-      var netCryptoGain = Math.max(0, profit - expenses);
-      var taxableGain = Math.max(0, netCryptoGain - CGT_ALLOWANCE);
+        var profit = parseFloat(profitInput && profitInput.value) || 0;
+        var income = parseFloat(incomeInput && incomeInput.value) || 0;
+        var expenses = parseFloat(expensesInput && expensesInput.value) || 0;
 
-      var availableBasicRateBand = BASIC_RATE_INCOME_THRESHOLD - income;
-      if (availableBasicRateBand < 0) {
-          availableBasicRateBand = 0;
-      }
+        var netCryptoGain = Math.max(0, profit - expenses);
+        var taxableGain = Math.max(0, netCryptoGain - CGT_ALLOWANCE);
 
-      var gainAtBasicRate = 0;
-      var gainAtHigherRate = 0;
+        var availableBasicRateBand = BASIC_RATE_INCOME_THRESHOLD - income;
+        if (availableBasicRateBand < 0) {
+            availableBasicRateBand = 0;
+        }
 
-      if (taxableGain > 0) {
-          gainAtBasicRate = Math.min(taxableGain, availableBasicRateBand);
-          gainAtHigherRate = taxableGain - gainAtBasicRate;
-      }
+        var gainAtBasicRate = 0;
+        var gainAtHigherRate = 0;
 
-      var cgtToPay = (gainAtBasicRate * CGT_BASIC_RATE) + (gainAtHigherRate * CGT_HIGHER_RATE);
-      var profitAfterTax = netCryptoGain - cgtToPay;
+        if (taxableGain > 0) {
+            gainAtBasicRate = Math.min(taxableGain, availableBasicRateBand);
+            gainAtHigherRate = taxableGain - gainAtBasicRate;
+        }
 
-      if (displays.netProfitDisplay) {
-          displays.netProfitDisplay.textContent = formatter.format(netCryptoGain);
-          displays.cgtAllowanceDisplay.textContent = '- ' + formatter.format(CGT_ALLOWANCE);
-          displays.taxableGainDisplay.textContent = formatter.format(taxableGain);
-          displays.cgtToPayDisplay.textContent = formatter.format(cgtToPay);
-          displays.profitAfterTaxDisplay.textContent = formatter.format(profitAfterTax);
-      }
+        var cgtToPay = (gainAtBasicRate * CGT_BASIC_RATE) + (gainAtHigherRate * CGT_HIGHER_RATE);
+        var profitAfterTax = netCryptoGain - cgtToPay;
 
-      if (logicExplanation) {
-          logicExplanation.innerHTML = ''
-              + '<div class="logic-box">'
-              +   '<p class="logic-title">1. Net Crypto Gain: ' + formatter.format(netCryptoGain) + '</p>'
-              +   '<p class="logic-text">'
-              +     'Calculated as Profit (' + textFormatter.format(profit) + ') minus Expenses (' + textFormatter.format(expenses) + ').'
-              +   '</p>'
-              + '</div>'
-              + '<div class="logic-box">'
-              +   '<p class="logic-title">2. Taxable Gain: ' + formatter.format(taxableGain) + '</p>'
-              +   '<p class="logic-text">'
-              +     'Net gain (' + textFormatter.format(netCryptoGain) + ') minus the tax-free capital gains allowance (' + textFormatter.format(CGT_ALLOWANCE) + ').'
-              +   '</p>'
-              + '</div>'
-              + '<div class="logic-box">'
-              +   '<p class="logic-title">3. Income band available for crypto gains</p>'
-              +   '<p class="logic-text">'
-              +     'Your other income (' + textFormatter.format(income) + ') leaves <strong>' + textFormatter.format(availableBasicRateBand) + '</strong> of the basic rate income band (£' + textFormatter.format(BASIC_RATE_INCOME_THRESHOLD) + ') available for your crypto gains.'
-              +   '</p>'
-              + '</div>'
-              + '<div class="logic-box logic-highlight">'
-              +   '<p class="logic-title">4. CGT breakdown</p>'
-              +   '<ul class="logic-list">'
-              +     '<li><strong>Basic rate (18%):</strong> applied to ' + formatter.format(gainAtBasicRate) + ' → tax ' + formatter.format(gainAtBasicRate * CGT_BASIC_RATE) + '</li>'
-              +     '<li><strong>Higher rate (24%):</strong> applied to ' + formatter.format(gainAtHigherRate) + ' → tax ' + formatter.format(gainAtHigherRate * CGT_HIGHER_RATE) + '</li>'
-              +     '<li><strong>Total CGT:</strong> ' + formatter.format(cgtToPay) + '</li>'
-              +   '</ul>'
-              + '</div>';
-      }
-  }
+        if (displays.netProfitDisplay) {
+            displays.netProfitDisplay.textContent = formatter.format(netCryptoGain);
+            displays.cgtAllowanceDisplay.textContent = '- ' + formatter.format(CGT_ALLOWANCE);
+            displays.taxableGainDisplay.textContent = formatter.format(taxableGain);
+            displays.cgtToPayDisplay.textContent = formatter.format(cgtToPay);
+            displays.profitAfterTaxDisplay.textContent = formatter.format(profitAfterTax);
+        }
 
-  // Add listeners
-  Object.keys(inputs).forEach(function (key) {
-      var input = inputs[key];
-      if (input && input.addEventListener) {
-          input.addEventListener('input', calculateCGT);
-      }
-  });
+        if (logicExplanation) {
+            logicExplanation.innerHTML = ''
+                + '<div class="logic-box">'
+                +   '<p class="logic-title">1. Net Crypto Gain: ' + formatter.format(netCryptoGain) + '</p>'
+                +   '<p class="logic-text">'
+                +     'Calculated as Profit (' + textFormatter.format(profit) + ') minus Expenses (' + textFormatter.format(expenses) + ').'
+                +   '</p>'
+                + '</div>'
+                + '<div class="logic-box">'
+                +   '<p class="logic-title">2. Taxable Gain: ' + formatter.format(taxableGain) + '</p>'
+                +   '<p class="logic-text">'
+                +     'Net gain (' + textFormatter.format(netCryptoGain) + ') minus the tax-free capital gains allowance (' + textFormatter.format(CGT_ALLOWANCE) + ').'
+                +   '</p>'
+                + '</div>'
+                + '<div class="logic-box">'
+                +   '<p class="logic-title">3. Income band available for crypto gains</p>'
+                +   '<p class="logic-text">'
+                +     'Your other income (' + textFormatter.format(income) + ') leaves <strong>' + textFormatter.format(availableBasicRateBand) + '</strong> of the basic rate income band (£' + textFormatter.format(BASIC_RATE_INCOME_THRESHOLD) + ') available for your crypto gains.'
+                +   '</p>'
+                + '</div>'
+                + '<div class="logic-box logic-highlight">'
+                +   '<p class="logic-title">4. CGT breakdown</p>'
+                +   '<ul class="logic-list">'
+                +     '<li><strong>Basic rate (18%):</strong> applied to ' + formatter.format(gainAtBasicRate) + ' → tax ' + formatter.format(gainAtBasicRate * CGT_BASIC_RATE) + '</li>'
+                +     '<li><strong>Higher rate (24%):</strong> applied to ' + formatter.format(gainAtHigherRate) + ' → tax ' + formatter.format(gainAtHigherRate * CGT_HIGHER_RATE) + '</li>'
+                +     '<li><strong>Total CGT:</strong> ' + formatter.format(cgtToPay) + '</li>'
+                +   '</ul>'
+                + '</div>';
+        }
+    }
 
-  window.addEventListener('load', calculateCGT);
-</script>
-<!-- /wp:html -->
+    // Add listeners
+    Object.keys(inputs).forEach(function (key) {
+        var input = inputs[key];
+        if (input && input.addEventListener) {
+            input.addEventListener('input', calculateCGT);
+        }
+    });
 
+    window.addEventListener('load', calculateCGT);
+  </script>
+</body>
+</html>
